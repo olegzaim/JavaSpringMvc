@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="em">
+		<class>com.em.model.Event</class>
+		<class>com.em.model.EventType</class>
+		<class>com.em.model.EventUser</class>
+		<class>com.em.model.UserBalance</class>
+		<class>com.em.model.PersistentLogin</class>
+		<class>com.em.model.Role</class>
+		<class>com.em.model.User</class>
+		<class>com.em.model.UserRole</class>
+	</persistence-unit>
+</persistence>
