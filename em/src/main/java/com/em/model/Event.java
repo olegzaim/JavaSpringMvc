@@ -17,7 +17,7 @@ public class Event implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String id;
+	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
@@ -36,11 +36,11 @@ public class Event implements Serializable {
 	public Event() {
 	}
 
-	public String getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Sign up</title>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{js/event.js}"
+	src="../static/js/event.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+	<div class="container text-center" id="taskDiv">
+		<button class="btn btn-success nBtn">New</button>
+		<h3>My Events</h3>
+		<div class="table-responsive">
+			<table class="table table-striped table-bordrdered">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Date</th>
+						<th>Place</th>
+						<th>Price</th>
+						<th>Seats Number</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="event :${events}">
+						<td th:text="${event.id}"></td>
+						<td th:text="${event.name}"></td>
+						<td th:text="${event.description}"></td>
+						<td th:text="${event.date}"></td>
+						<td th:text="${event.place}"></td>
+						<td th:text="${event.price}"></td>
+						<td th:text="${event.seatsNumber}"></td>
+						<td><a th:href="@{findOne/(id=${event.id})}"
+							class="btn btn-primary eBtn">Edit</a> <a
+							th:href="@{delete/(id=${event.id})}"
+							class="btn btn-danger delBtn">Delete</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr />
+			<!-- <ul class = "nav nav-pills">
+			<li class = "nav-item" th:each="i : ${#numbers.squence(0,data.totalPages-1)}">
+				<a th:href="@{/(page=${})}" th:text="${i}" class="nav-link"
+				th:classappend="${currentPage}==${i}?'active':'"></a>
+				
+			</li> 
+			</ul> -->
+		</div>
+		<div class="myForm">
+			<form th:action="@{/event}" method="post">
+
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Update or
+									create</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="form-group" style="text-align: left;">
+									<label for="id" class="col-form-label">ID:</label> <input
+										type="text" class="form-control" id="id" name="id" value="" />
+								</div>
+								<div class="form-group" style="text-align: left;">
+									<label for="name" class="col-form-label">Name:</label> <input
+										type="text" class="form-control" id="name" name="name"
+										value="" />
+								</div>
+								<div class="form-group" style="text-align: left;">
+									<label for="description" class="col-form-label">Description:</label>
+									<input type="text" class="form-control" id="description"
+										name="description" value="" />
+								</div>
+								<div class="form-group" style="text-align: left;">
+									<label for="place" class="col-form-label">Place:</label> <input
+										type="text" class="form-control" id="place" name="place"
+										value="" />
+								</div>
+								<div class="form-group" style="text-align: left;">
+									<label for="price" class="col-form-label">Price:</label> <input
+										type="text" class="form-control" id="price" name="price"
+										value="" />
+								</div>
+								<div class="form-group" style="text-align: left;">
+									<label for="seatsNumber" class="col-form-label">Seats
+										Number:</label> <input type="text" class="form-control"
+										id="seatsNumber" name="seatsNumber" value="" />
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<input type="submit" class="btn btn-primary" value="save" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</form>
+			<div class="modal fade" id="myModel" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalCenterTitle">Modal
+								title</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p class="alert alret-danger">Are you sure you want to delete
+								this country</p>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
+							<a href="" class="btn btn-danger" id="delRef">Delete</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

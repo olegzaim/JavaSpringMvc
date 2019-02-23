@@ -1,18 +1,13 @@
 package com.em.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.util.RedirectUrlBuilder;
 import org.springframework.stereotype.Service;
 
-import com.em.model.Role;
 import com.em.model.User;
-import com.em.model.UserRole;
 import com.em.repository.RoleRepository;
 import com.em.repository.UserRepository;
 import com.em.repository.UserRoleRepository;

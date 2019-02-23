@@ -66,24 +66,6 @@ public class UserController {
 		return "/login";
     	
     }
-//    @RequestMapping(value = { "/login" }, method = RequestMethod.POST)
-//    public String login(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
-//    	if (bindingResult.hasErrors())
-//            model.addAttribute("error", "Your username and password is invalid.");
-//    	
-//        User u = userService.findUserByEmail(user.getEmail());
-//
-//    	model.addAttribute("user", u);
-//        return "redirect:/home";
-//    }
-//    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
-//    public String welcome(Model model) {
-//    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//    	User user = userService.findUserByEmail(auth.getName());
-//    	
-//    	model.addAttribute("userName", user.getFirstname() + " " + user.getLastname());
-//        return "home";
-//    }
     @GetMapping("/home")
     public String home(Map<String,Object> model) {
     	
