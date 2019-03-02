@@ -55,7 +55,7 @@ public class UserController {
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
-        
+
 
         return "login";
     }
@@ -63,7 +63,7 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(Map<String,Object> model) {
     	
-		return "/login";
+		return "redirect:/login";
     	
     }
     @GetMapping("/home")
