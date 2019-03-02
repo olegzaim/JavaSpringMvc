@@ -1,7 +1,6 @@
 /**
  * 
  */
-
 $(document).ready(function(){
 	
 	$('.nBtn, .table .eBtn').on('click',function(event){
@@ -44,5 +43,4 @@ $(document).ready(function(){
 
 		
 	});
-	
 });

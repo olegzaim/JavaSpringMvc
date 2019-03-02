@@ -24,17 +24,16 @@ public class Automation {
 		WebElement usernameElement = driver.findElement(By.name("username"));
 		WebElement passElement = driver.findElement(By.name("password"));
 		WebElement formElement = driver.findElement(By.id("loginForm"));
-		
-		
+
 		usernameElement.sendKeys("oleg");
 		passElement.sendKeys("oleg");
-		
+
 		formElement.submit();
-		
+
 		Thread.sleep(5000); // Let the user actually see something!
 		driver.quit();
 	}
-	
+
 	@Test
 	public void testLoginPageInvalidPasswordAndUsername() throws InterruptedException {
 
@@ -46,21 +45,18 @@ public class Automation {
 		WebElement usernameElement = driver.findElement(By.name("username"));
 		WebElement passElement = driver.findElement(By.name("password"));
 		WebElement formElement = driver.findElement(By.id("loginForm"));
-		
-		
+
 		usernameElement.sendKeys("oleg123");
 		passElement.sendKeys("oleg23344");
-		
+
 		formElement.submit();
-		
-		  WebDriverWait wait = new WebDriverWait(driver, 10);
-		    WebElement messageElement = wait.until(
-		           ExpectedConditions.presenceOfElementLocated(By.id("error"))
-		            );
-		 String message                 = messageElement.getText();
-		    String successMsg             = "The username or password is incorrect!";
-		    Assert.assertEquals (message, successMsg);
-		
+
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebElement messageElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("error")));
+		String message = messageElement.getText();
+		String successMsg = "The username or password is incorrect!";
+		Assert.assertEquals(message, successMsg);
+
 		Thread.sleep(5000); // Let the user actually see something!
 		driver.quit();
 	}
