@@ -17,7 +17,7 @@
 
 <body>
 	<div class="container">
-		<div class="alert alert-danger" role="alert" th:if="${param.error}">
+		<div class="alert alert-danger" role="alert" id="error" th:if="${param.error}">
 			The username or password is incorrect!</div>
 		<div th:if="${param.logout}" class="alert alert-success">You
 			have been logged out.</div>
