@@ -24,8 +24,10 @@
 	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
 	crossorigin="anonymous">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
 </head>
 <body>
@@ -44,6 +46,8 @@
 				</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					th:href="@{/events}">My Events</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{/user}">Profile</a></li>
 				<!--       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li> -->
@@ -84,7 +88,9 @@
 						<td><a th:href="@{findOne/(id=${event.id})}"
 							class="btn btn-primary eBtn">Edit</a> <a
 							th:href="@{delete/(id=${event.id})}"
-							class="btn btn-danger delBtn">Delete</a></td>
+							class="btn btn-danger delBtn">Delete</a> <a
+							class="btn btn-primary subsBtn"
+							th:href="@{'/eventUsers/'+ ${event.id}}">Subscribers</a></td>
 					</tr>
 				</tbody>
 			</table>
@@ -115,10 +121,6 @@
 							</div>
 							<div class="modal-body">
 								<div class="form-group" style="text-align: left;">
-									<label for="id" class="col-form-label">ID:</label> <input
-										type="text" class="form-control" id="id" name="id" value="" />
-								</div>
-								<div class="form-group" style="text-align: left;">
 									<label for="name" class="col-form-label">Name:</label> <input
 										type="text" class="form-control" id="name" name="name"
 										value="" />
@@ -132,7 +134,7 @@
 									<label for="description" class="col-form-label">Date:</label> <input
 										type="text" class="form-control" id="date" name="date"
 										value="" placeholder="MM/DD/YYY" />
-										
+
 								</div>
 								<div class="form-group" style="text-align: left;">
 									<label for="place" class="col-form-label">Place:</label> <input

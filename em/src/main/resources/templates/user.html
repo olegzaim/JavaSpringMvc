@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" th:src="@{js/user.js}"
+	src="../static/js/user.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+</head>
+<body>
+	<link rel="stylesheet"
+		href="https://bootswatch.com/4/simplex/bootstrap.min.css" />
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<i class="fas fa-calendar-check"></i> <a class="navbar-brand"
+				th:href="@{/home}">Event Manager</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" th:href="@{/home}">Home
+					</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/events}">My Events</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/user}">Profile<span class="sr-only">(current)</span></a></li>
+					<!--       <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li> -->
+
+				</ul>
+			</div>
+			<div class="nav navbar-nav navbar-right">
+				<a th:href="@{/logout}" class="navbar-brand"><strong>Logout</strong></a>
+			</div>
+		</nav>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+
+					<div class="card-body">
+						<div class="card-title mb-4">
+							<div class="d-flex justify-content-start">
+								<div class="image-container">
+									<img src="http://placehold.it/150x150" id="imgProfile"
+										style="width: 150px; height: 150px" class="img-thumbnail" />
+									<div class="middle">
+										<input type="button" class="btn btn-secondary"
+											id="btnChangePicture" value="Change" /> <input type="file"
+											style="display: none;" id="profilePicture" name="file" />
+									</div>
+								</div>
+								<div class="userData ml-3">
+									<h2 class="d-block"
+										style="font-size: 1.5rem; font-weight: bold">
+										<a href="javascript:void(0);"
+											th:text="${user.firstname +' ' + user.lastname}">Some
+											Name</a>
+									</h2>
+									<h6 class="d-block">
+										<a href="javascript:void(0)">300</a> Visited Events
+									</h6>
+								</div>
+								<div class="ml-auto">
+									<input type="button" class="btn btn-primary d-none"
+										id="btnDiscard" value="Discard Changes" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+									<li class="nav-item"><a class="nav-link active"
+										id="basicInfo-tab" data-toggle="tab" href="#basicInfo"
+										role="tab" aria-controls="basicInfo" aria-selected="true">Basic
+											Info</a></li>
+									<li class="nav-item"><a class="nav-link"
+										id="connectedServices-tab" data-toggle="tab"
+										href="#connectedServices" role="tab"
+										aria-controls="connectedServices" aria-selected="false">Event
+											Subscriptions</a></li>
+									<li class="nav-item"><a class="nav-link"
+										id="connectedServices-tab" data-toggle="tab" href="#allEvents"
+										role="tab" aria-controls="allEvents" aria-selected="false">All
+											Events</a></li>
+								</ul>
+								<div class="tab-content ml-1" id="myTabContent">
+									<div class="tab-pane fade show active" id="basicInfo"
+										role="tabpanel" aria-labelledby="basicInfo-tab">
+
+
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight: bold;">Full Name</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<h6 th:text="${user.firstname +' ' + user.lastname}"></h6>
+											</div>
+										</div>
+										<hr />
+
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight: bold;">Email</label>
+											</div>
+											<div class="col-md-8 col-6">
+												<h6 th:text="${user.email}"></h6>
+											</div>
+										</div>
+										<hr />
+
+
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight: bold;">Something</label>
+											</div>
+											<div class="col-md-8 col-6">Something</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight: bold;">Something</label>
+											</div>
+											<div class="col-md-8 col-6">Something</div>
+										</div>
+										<hr />
+										<div class="row">
+											<div class="col-sm-3 col-md-2 col-5">
+												<label style="font-weight: bold;">Something</label>
+											</div>
+											<div class="col-md-8 col-6">Something</div>
+										</div>
+										<hr />
+
+									</div>
+									<div class="tab-pane fade" id="connectedServices"
+										role="tabpanel" aria-labelledby="EventSubscriptions-tab">
+										<table class="table table-striped table-bordrdered">
+											<thead>
+												<tr>
+													<!-- 						<th>Id</th>
+ -->
+													<th>Name</th>
+													<th>Description</th>
+													<th>Date</th>
+													<th>Place</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="event :${events}">
+													<td th:text="${event.name}"></td>
+													<td th:text="${event.description}"></td>
+													<td th:text="${event.date}"></td>
+													<td th:text="${event.place}"></td>
+													<td th:text="${event.price}"></td>
+													<td><a
+														th:href="@{deleteUserEvent/(eventId=${event.id})}"
+														class="btn btn-primary delBtn">Unsubscribe</a></td>
+												</tr>
+											</tbody>
+										</table>
+										<hr />
+									</div>
+									<div class="tab-pane fade" id="allEvents" role="tabpanel"
+										aria-labelledby="AllEvents-tab">
+										<table class="table table-striped table-bordrdered">
+											<thead>
+												<tr>
+													<!-- 						<th>Id</th>
+ -->
+													<th>Name</th>
+													<th>Description</th>
+													<th>Date</th>
+													<th>Place</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="event:${allEvents}">
+													<td th:text="${event.name}"></td>
+													<td th:text="${event.description}"></td>
+													<td th:text="${event.date}"></td>
+													<td th:text="${event.place}"></td>
+													<td th:text="${event.price}"></td>
+													<td><a th:href="@{/userEvent/(eventId=${event.id})}"
+														class="btn btn-success eBtn">Subscribe</a>
+												</tr>
+											</tbody>
+										</table>
+										<hr />
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+</html>

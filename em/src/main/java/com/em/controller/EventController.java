@@ -1,9 +1,12 @@
 package com.em.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,7 +20,7 @@ public class EventController {
 
 	@Autowired
 	private EventServiceImpl eventService;
-	
+
 	@Autowired
 	private EventRepository eventRepo;
 
@@ -38,7 +41,13 @@ public class EventController {
 	public Event findOne(Long id) {
 		return eventRepo.findById(id).get();
 	}
-	
+
+	@GetMapping("/allEvents")
+	public String allEvent(Model model) {
+		model.addAttribute("allEvents", eventService.getAllEvents());
+		return "allEvents";
+	}
+
 	@GetMapping("/delete")
 	public String delete(Long id) {
 		eventService.deleteEvent(id);

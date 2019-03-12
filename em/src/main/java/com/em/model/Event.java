@@ -5,18 +5,17 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
 /**
  * The persistent class for the EVENT database table.
  * 
  */
 @Entity
-@NamedQuery(name="Event.findAll", query="SELECT e FROM Event e")
+@NamedQuery(name = "Event.findAll", query = "SELECT e FROM Event e")
 public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -30,7 +29,7 @@ public class Event implements Serializable {
 
 	private BigDecimal price;
 
-	@Column(name="SEATS_NUMBER")
+	@Column(name = "SEATS_NUMBER")
 	private int seatsNumber;
 
 	public Event() {

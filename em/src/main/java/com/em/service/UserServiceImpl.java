@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService  {
 		return users;
 	}
 
-	public User getUser(Long id) {
+	public User getUser(Integer id) {
 		return userRepository.findById(id).get();
 	}
 
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService  {
 	public void updateUser(Long id, User user) {
 		userRepository.save(user);
 	}
-	public void deleteUser(Long id) {
+	public void deleteUser(Integer id) {
 		userRepository.deleteById(id);
 	}
 
@@ -66,6 +66,12 @@ public class UserServiceImpl implements UserService  {
 	@Override
 	public User findUserByUsername(String username) {
 		return userRepository.findByUsername(username);
+	}
+
+	@Override
+	public void deleteUser(Long id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

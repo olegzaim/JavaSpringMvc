@@ -10,7 +10,7 @@ public interface UserService {
 	
 	public List<User> getAllUsers();
 	
-	public User getUser(Long id);
+	public User getUser(Integer id);
 	
 	public void addUser(User user);
 	

@@ -6,6 +6,8 @@ import javax.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -36,9 +38,11 @@ public class User implements Serializable,UserDetails {
 	private String username;
 
 	//bi-directional many-to-one association to UserRole
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<UserRole> userRole;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<Role> role;
@@ -46,6 +50,7 @@ public class User implements Serializable,UserDetails {
 	public User() {
 	}
 
+	@JsonIgnore
 	public List<UserRole> getUserRole() {
 		return userRole;
 	}
@@ -54,6 +59,7 @@ public class User implements Serializable,UserDetails {
 		this.userRole = userRole;
 	}
 
+	@JsonIgnore
 	public List<Role> getRole() {
 		return role;
 	}
@@ -121,7 +127,8 @@ public class User implements Serializable,UserDetails {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-
+	
+	@JsonIgnore
 	public List<UserRole> getUserRoles() {
 		return this.userRole;
 	}
@@ -145,6 +152,7 @@ public class User implements Serializable,UserDetails {
 	}
 
 	@Override
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return getRole();
 	}
